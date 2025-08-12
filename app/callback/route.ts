@@ -1,10 +1,23 @@
-import { handleSignIn } from '@logto/next/server-actions';
-import { redirect } from 'next/navigation';
 import { NextRequest } from 'next/server';
-import { logtoConfig } from '../logto';
+import { redirect } from 'next/navigation';
 
 export async function GET(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams;
-  await handleSignIn(logtoConfig, searchParams);
-  redirect('/');
+  try {
+    // Por ahora, simplemente redirigimos al dashboard
+    // El manejo del token se hará en el cliente
+    const searchParams = request.nextUrl.searchParams;
+    const code = searchParams.get('code');
+    const state = searchParams.get('state');
+    
+    if (code && state) {
+      // Login exitoso, redirigir al dashboard
+      return redirect('/dashboard');
+    } else {
+      // Error en el login, redirigir al inicio
+      return redirect('/');
+    }
+  } catch (error) {
+    console.error('Callback error:', error);
+    return redirect('/');
+  }
 }
