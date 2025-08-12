@@ -2,7 +2,7 @@ export default function Home() {
   const endpoint = "https://logto-r48okwks84844k4c00080gk0.industriasgalgo.com";
   const appId = "c2ym149uubn2plcgsg4ok";
   const callbackUrl = process.env.NODE_ENV === 'production' 
-    ? `${process.env.NEXT_PUBLIC_BASE_URL || 'https://your-domain.com'}/callback`
+    ? 'https://xtrategia.industriasgalgo.com/callback'
     : 'http://localhost:3001/callback';
   
   const loginUrl = `${endpoint}/oidc/auth?client_id=${appId}&redirect_uri=${encodeURIComponent(callbackUrl)}&response_type=code&scope=openid%20profile&state=login`;
