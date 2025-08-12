@@ -1,9 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  // Por ahora, permitimos todas las rutas
-  // La protección se manejará en los componentes usando server actions
-  return NextResponse.next();
+  // Configurar headers para SSO entre subdominios
+  const response = NextResponse.next();
+  
+  // Permitir cookies cross-domain para SSO
+  response.headers.set('Access-Control-Allow-Credentials', 'true');
+  response.headers.set('Access-Control-Allow-Origin', '*.industriasgalgo.com');
+  
+  return response;
 }
 
 export const config = {
