@@ -12,10 +12,10 @@ export default function Home() {
       <div className="max-w-md w-full space-y-8 p-8">
         <div className="text-center">
           <h1 className="text-3xl font-bold text-gray-900 mb-4">
-            SaaS Logto
+            Welcome to Xtrategia
           </h1>
           <p className="text-gray-600 mb-8">
-            Secure authentication powered by Logto
+            Sign in to access your secure dashboard
           </p>
         </div>
         

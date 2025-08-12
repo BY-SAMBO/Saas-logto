@@ -10,8 +10,8 @@ export async function GET(request: NextRequest) {
     const state = searchParams.get('state');
     
     if (code && state) {
-      // Login exitoso, redirigir al dashboard
-      return redirect('/dashboard');
+      // Login exitoso, redirigir a home
+      return redirect('/home');
     } else {
       // Error en el login, redirigir al inicio
       return redirect('/');
