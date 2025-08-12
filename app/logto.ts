@@ -7,5 +7,4 @@ export const logtoConfig: LogtoNextConfig = {
   baseUrl: process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3001',
   cookieSecret: process.env.LOGTO_COOKIE_SECRET!,
   cookieSecure: process.env.NODE_ENV === 'production',
-  encryptionKey: process.env.LOGTO_COOKIE_SECRET!,
 };

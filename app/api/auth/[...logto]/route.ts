@@ -1,21 +1,17 @@
-import { handleSignIn, handleSignOut } from '@logto/next/server-actions';
+import { handleSignIn } from '@logto/next/server-actions';
 import { redirect } from 'next/navigation';
 import { NextRequest } from 'next/server';
 import { logtoConfig } from '../../../logto';
 
 export async function GET(request: NextRequest) {
   const { searchParams } = request.nextUrl;
-  const action = searchParams.get('action');
+  
+  // Handle the callback from Logto after authentication
+  await handleSignIn(logtoConfig, searchParams);
+  redirect('/dashboard');
+}
 
-  if (action === 'sign-in') {
-    await handleSignIn(logtoConfig, searchParams);
-    redirect('/');
-  }
-
-  if (action === 'sign-out') {
-    await handleSignOut(logtoConfig);
-    redirect('/');
-  }
-
-  return new Response('Not found', { status: 404 });
+export async function POST(request: NextRequest) {
+  // Handle other auth-related POST requests if needed
+  return new Response('Method not allowed', { status: 405 });
 }
