@@ -16,10 +16,16 @@ export async function GET(request: NextRequest) {
     
     if (code) {
       console.log('✅ CODE FOUND - Redirecting to /home');
-      return Response.redirect(new URL('/home', request.url), 302);
+      const homeUrl = process.env.NODE_ENV === 'production' 
+        ? 'https://xtrategia.industriasgalgo.com/home'
+        : 'http://localhost:3001/home';
+      return Response.redirect(homeUrl, 302);
     } else {
       console.log('❌ NO CODE - Redirecting to /');
-      return Response.redirect(new URL('/', request.url), 302);
+      const rootUrl = process.env.NODE_ENV === 'production'
+        ? 'https://xtrategia.industriasgalgo.com/'
+        : 'http://localhost:3001/';
+      return Response.redirect(rootUrl, 302);
     }
   } catch (error) {
     console.error('❌ Callback error:', error);
