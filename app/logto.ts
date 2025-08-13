@@ -7,10 +7,4 @@ export const logtoConfig: LogtoNextConfig = {
   baseUrl: process.env.NODE_ENV === 'production' ? 'https://xtrategia.industriasgalgo.com' : 'http://localhost:3001',
   cookieSecret: process.env.LOGTO_COOKIE_SECRET!,
   cookieSecure: process.env.NODE_ENV === 'production',
-  // Configuración SSO para compartir sesiones entre subdominios
-  cookieOptions: {
-    domain: process.env.NODE_ENV === 'production' ? '.industriasgalgo.com' : 'localhost',
-    sameSite: 'lax',
-    httpOnly: true,
-  },
 };
